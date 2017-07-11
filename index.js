@@ -10,7 +10,7 @@ export {default as geoBottomley, bottomleyRaw as geoBottomleyRaw} from "./src/bo
 export {default as geoBromley, bromleyRaw as geoBromleyRaw} from "./src/bromley";
 export {default as geoChamberlin, chamberlinRaw as geoChamberlinRaw, chamberlinAfrica as geoChamberlinAfrica} from "./src/chamberlin";
 export {default as geoCollignon, collignonRaw as geoCollignonRaw} from "./src/collignon";
-export {default as geoCox} from "./src/cox.js";
+export {default as geoCox, coxRaw as geoCoxRaw} from "./src/cox.js";
 export {default as geoCraig, craigRaw as geoCraigRaw} from "./src/craig";
 export {default as geoCraster, crasterRaw as geoCrasterRaw} from "./src/craster";
 export {default as geoCylindricalEqualArea, cylindricalEqualAreaRaw as geoCylindricalEqualAreaRaw} from "./src/cylindricalEqualArea";

@@ -37,6 +37,7 @@ context.save();
 switch (projectionName) {
   case "armadillo":
   case "berghaus":
+  case "cox":
   case "gingery":
   case "hammerRetroazimuthal":
   case "healpix":

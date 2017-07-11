@@ -17,9 +17,9 @@ function sm_1(z) {
     var k = [0, 0];
 
     // rotate to have s ~= 1
-    var rot = complexPow(w, scan([0, 1, 2].map(
-      i => -complexMul(z, complexPow(w, [i, 0]))[0]
-    )));
+    var rot = complexPow(w, scan([0, 1, 2].map(function(i) {
+      return -complexMul(z, complexPow(w, [i, 0]))[0];
+    })));
       
     var y = complexMul(rot, z);
     y = [1 - y[0], - y[1]];
@@ -113,8 +113,7 @@ export default function() {
   };
 
   return p
-      .scale(188.68)
-      .center([0, 30])
-      .translate([480, 307.564]);
+    .scale(188.305)
+    .center([0, 0]);
 }
 

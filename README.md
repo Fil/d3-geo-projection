@@ -159,6 +159,13 @@ The Chamberlin projection for Africa using points [0°, 22°], [45°, 22°], [22
 
 The Collignon equal-area pseudocylindrical projection. This projection is used in the polar areas of the [HEALPix projection](#geoHealpix).
 
+<a href="#geoCox" name="geoCox">#</a> d3.<b>geoCox</b>() [<>](https://github.com/d3/d3-geo-projection/blob/master/src/cox.js "Source")
+<br><a href="#geoCoxRaw" name="geoCoxRaw">#</a> d3.<b>geoCoxRaw</b>
+
+[<img src="https://raw.githubusercontent.com/d3/d3-geo-projection/master/img/cox.png" width="480" height="250">](https://bl.ocks.org/Fil/1aafd8fa22b62243290674384c364dd0)
+
+The Cox conformal projection.
+
 <a href="#geoConicConformal" name="geoConicConformal">#</a> d3.<b>geoConicConformal</b>() [<>](https://github.com/d3/d3-geo/blob/master/src/projection/conicConformal.js "Source") [\[d3-geo\]](https://github.com/d3/d3-geo/blob/master/README.md#geoConicConformal)
 <br><a href="#geoConicConformalRaw" name="geoConicConformalRaw">#</a> d3.<b>geoConicConformalRaw</b>
 

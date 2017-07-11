@@ -46,7 +46,7 @@ export function complexNorm2(a) {
   return a[0] * a[0] + a[1] * a[1];
 }
 
-export function complexLogHypoth(a, b) {
+export function complexLogHypot(a, b) {
   var _a = abs(a),
       _b = abs(b);
   if (a === 0) return log(_b);

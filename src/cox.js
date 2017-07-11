@@ -2,13 +2,14 @@ import {geoProjection as projection} from "d3-geo";
 import {scan} from "d3-array";
 import {sqrt} from "./math";
 import {lagrangeRaw} from "./lagrange";
-import {complexAdd, complexMul, complexNorm, complexPow} from "./complex";
+import {complexAdd, complexMul, complexNorm2, complexPow} from "./complex";
 
 
 // w1 = gamma(1/n) * gamma(1 - 2/n) / n / gamma(1 - 1/n)
 // https://bl.ocks.org/Fil/852557838117687bbd985e4b38ff77d4
 var w = [-1/2, sqrt(3)/2],
-    w1 = [1.7666387502854533, 0];
+    w1 = [1.7666387502854533, 0],
+    m = 0.3 * 0.3;
 
 // Approximate \int _0 ^sm(z)  dt / (1 - t^3)^(2/3)
 // sm maps a triangle to a disc, sm^-1 does the opposite
@@ -63,7 +64,7 @@ function sm_1(z) {
     // https://www.wolframalpha.com/input/?i=(-2%2F3+choose+k)++*+(-1)%5Ek++%2F+(k%2B1)+with+k%3D0,1,2,3,4
     // the difference is _very_ tiny but necessary
     // if we want projection(0,0) === [0,0]
-    var n = complexNorm(z), m = 0.3;
+    var n = complexNorm2(z);
     if (n < m) {
       var H0 = [
         1, 1/3, 5/27, 10/81, 22/243 //…

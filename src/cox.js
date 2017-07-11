@@ -113,7 +113,8 @@ export default function() {
   };
 
   return p
-    .scale(188.305)
-    .center([0, 0]);
+    .scale(188.682)
+    .center([0, 0])
+    .translate([ 480, 500 * 2 /3 ]);
 }
 

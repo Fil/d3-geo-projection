@@ -55,7 +55,7 @@ function sm_1(z) {
       complexAdd(w1,
         complexMul([-F[0], -F[1]], complexPow(y, (1-2/3)))
       ),
-      complexPow(rot, [2,0])
+      complexMul(rot, rot)
     );
 
     // when we are close to [0,0] we switch to another approximation:

@@ -1,4 +1,4 @@
-import {abs, atan2, cos, exp, halfPi, log, pow, sin} from "./math";
+import {abs, atan2, cos, exp, halfPi, log, pow, sin, sqrt} from "./math";
 
 export function complexAtan(x, y) {
   var x2 = x * x,
@@ -12,7 +12,7 @@ export function complexAtan(x, y) {
 
 export function complexDivide(a, b) {
   if (b[1])
-    a = complexMul(a, b), b = complexNorm2(b);
+    a = complexMul(a, [b[0], -b[1]]), b = complexNorm2(b);
   else
     b = b[0];
   return [
@@ -23,8 +23,8 @@ export function complexDivide(a, b) {
 
 export function complexMul(a, b) {
   return [
-    a[0] * b[0] + a[1] * b[1],
-    a[1] * b[0] - a[0] * b[1]
+    a[0] * b[0] - a[1] * b[1],
+    a[1] * b[0] + a[0] * b[1]
   ];
 }
 
@@ -44,6 +44,10 @@ export function complexSub(a, b) {
 
 export function complexNorm2(a) {
   return a[0] * a[0] + a[1] * a[1];
+}
+
+export function complexNorm(a) {
+  return sqrt(complexNorm2(a));
 }
 
 export function complexLogHypot(a, b) {

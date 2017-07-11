@@ -24,8 +24,6 @@ function sm_1(z) {
     var y = complexMul(rot, z);
     y = [1 - y[0], - y[1]];
     
-    // var n = 3
-
     // McIlroy formula 5 p6 and table for F3 page 16
     var F0 = [
       1.44224957030741,

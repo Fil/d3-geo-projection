@@ -1,6 +1,6 @@
-import {geoProjection as projection} from "d3-geo";
+import {geoProjection as projection, geoStream} from "d3-geo";
 import {scan} from "d3-array";
-import {sqrt} from "./math";
+import {asin, degrees, epsilon, sqrt} from "./math";
 import {lagrangeRaw} from "./lagrange";
 import {complexAdd, complexMul, complexNorm2, complexPow} from "./complex";
 
@@ -87,9 +87,34 @@ export function coxRaw(lambda, phi) {
   return [t[1], t[0]]
 }
 
+// the Sphere should go *exactly* to the vertices of the triangles
+// because they are singular points
+function sphere() {
+  var c = 2 * asin(1 / sqrt(5)) * degrees;
+  return {
+    type: "Polygon",
+    coordinates: [
+      [ [ 0,90 ],  [ -180, -c + epsilon ], [ 0, -90 ], [ 180, -c + epsilon ], [ 0,90 ] ]
+    ]
+  };
+}
+
 export default function() {
-  return projection(coxRaw)
+  var p = projection(coxRaw);
+
+  var stream_ = p.stream;
+  p.stream = function(stream) {
+    var rotate = p.rotate(),
+        rotateStream = stream_(stream),
+        sphereStream = (p.rotate([0, 0]), stream_(stream));
+    p.rotate(rotate);
+    rotateStream.sphere = function() { geoStream(sphere(), sphereStream); };
+    return rotateStream;
+  };
+
+  return p
       .scale(188.68)
       .center([0, 30])
-      .translate([480, 307.567]);
+      .translate([480, 307.564]);
 }
+

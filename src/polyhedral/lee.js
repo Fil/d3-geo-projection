@@ -155,7 +155,7 @@ export default function() {
     .clipAngle(180) // this is only to avoid antimeridian clipping on the Sphere - needs d3-geo.clipPolygon
     .precision(0.05)
     .rotate([-30, 0])
-    .rotate([30, 180]) // for North Pole aspect, needs clipPolygon
+    //.rotate([30, 180]) // for North Pole aspect, needs clipPolygon
     .scale(118.662)
-    .center([0, 0]);
+    .center([0,-35.3141]);
 }

@@ -828,6 +828,17 @@ The gnomonic butterfly projection.
 
 The Collignon butterfly projection.
 
+<a href="#geoPolyhedralLee" name="geoPolyhedralLee">#</a> d3.<b>geoPolyhedralLee</b>(<i>orientation</i>) [<>](https://github.com/d3/d3-geo-projection/blob/master/src/polyhedral/lee.js "Source")
+<br><a href="#geoLeeRaw" name="geoLeeRaw">#</a> d3.<b>geoLeeRaw</b>
+
+[<img src="https://raw.githubusercontent.com/d3/d3-geo-projection/master/img/polyhedralLee.png" width="480" height="250">](https://bl.ocks.org/Fil/79d2073c50e02b1b4f74e3f330183581)
+
+Lee’s tetrahedral conformal projection.
+
+<a href="polyhedralLee_orientation" name="polyhedralLee_orientation">#</a> Default <i>orientation</i> is +30°, apex up (-30° for base up, apex down).
+
+Default aspect uses *projection*.rotate([-30, 0]) and has the South Pole at the triangle’s center -- use *projection*.rotate([30, 180]) for the [North Pole aspect](https://bl.ocks.org/Fil/c36ed66a4d50d77150712c80642a78d5).
+
 <a href="#geoPolyhedralWaterman" name="geoPolyhedralWaterman">#</a> d3.<b>geoPolyhedralWaterman</b>() [<>](https://github.com/d3/d3-geo-projection/blob/master/src/polyhedral/waterman.js "Source")
 
 [<img src="https://raw.githubusercontent.com/d3/d3-geo-projection/master/img/polyhedralWaterman.png" width="480" height="250">](https://www.jasondavies.com/maps/waterman-butterfly/)

@@ -157,6 +157,6 @@ export default function() {
     .precision(0.05)
     .rotate([-30, 0])
     //.rotate([30, 180]) // for North Pole aspect, needs clipPolygon
-    .scale(118.662)
-    .center([0,-35.3141]);
+    .scale(118.899)
+    .center([0,-35.315]);
 }

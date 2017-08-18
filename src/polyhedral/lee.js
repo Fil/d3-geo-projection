@@ -1,7 +1,7 @@
 import {geoProjection as projection, geoStereographicRaw, geoCentroid, geoContains} from "d3-geo";
 import polyhedral from "./index";
 import {scan} from "d3-array";
-import {abs, asin, degrees, pi, sqrt} from "../math";
+import {abs, asin, degrees, pi, radians, sqrt} from "../math";
 import {complexAdd, complexMul, complexNorm, complexPow, complexSub} from "../complex";
 
 
@@ -113,6 +113,7 @@ var tetrahedron = [[1, 2, 3], [0, 2, 1], [0, 3, 2], [0, 1, 3]].map(function(
 
 // geoTetrahedralLee
 export default function() {
+  var orientation = (arguments.length ? arguments[0] : 30) * radians;
   var faceProjection = function(face) {
       var c = geoCentroid({ type: "MultiPoint", coordinates: face }),
         rotate = [-c[0], -c[1], 30];
@@ -141,7 +142,7 @@ export default function() {
           geoContains(
             {
               type: "Polygon",
-              coordinates: [[...tetrahedron[i], tetrahedron[i][0]]]
+              coordinates: [[tetrahedron[i][0], tetrahedron[i][1], tetrahedron[i][2], tetrahedron[i][0]]]
             },
             [lambda, phi]
           )
@@ -150,7 +151,7 @@ export default function() {
         }
       }
     },
-    pi / 6
+    orientation
   )
     .clipAngle(180) // this is only to avoid antimeridian clipping on the Sphere - needs d3-geo.clipPolygon
     .precision(0.05)

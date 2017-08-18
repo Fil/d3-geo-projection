@@ -1,7 +1,7 @@
 import {geoProjection as projection, geoStereographicRaw, geoCentroid, geoContains} from "d3-geo";
 import polyhedral from "./index";
 import {scan} from "d3-array";
-import {abs, asin, degrees, pi, radians, sqrt} from "../math";
+import {abs, asin, degrees, radians, sqrt} from "../math";
 import {complexAdd, complexMul, complexNorm, complexPow, complexSub} from "../complex";
 
 

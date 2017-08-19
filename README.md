@@ -162,7 +162,7 @@ The Collignon equal-area pseudocylindrical projection. This projection is used i
 <a href="#geoCox" name="geoCox">#</a> d3.<b>geoCox</b>() [<>](https://github.com/d3/d3-geo-projection/blob/master/src/cox.js "Source")
 <br><a href="#geoCoxRaw" name="geoCoxRaw">#</a> d3.<b>geoCoxRaw</b>
 
-[<img src="https://raw.githubusercontent.com/d3/d3-geo-projection/master/img/cox.png" width="480" height="250">](https://bl.ocks.org/Fil/1aafd8fa22b62243290674384c364dd0)
+[<img src="https://raw.githubusercontent.com/d3/d3-geo-projection/master/img/cox.png" width="480" height="250">](https://visionscarto.net/cox-conformal-projection)
 
 The Cox conformal projection.
 

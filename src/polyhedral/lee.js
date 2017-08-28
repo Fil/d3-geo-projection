@@ -111,7 +111,6 @@ var tetrahedron = [[1, 2, 3], [0, 2, 1], [0, 3, 2], [0, 1, 3]].map(function(
   });
 });
 
-// geoTetrahedralLee
 export default function() {
   var orientation = (arguments.length ? arguments[0] : 30) * radians;
   var faceProjection = function(face) {

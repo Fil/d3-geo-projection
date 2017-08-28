@@ -26,6 +26,7 @@ function interpolateLine(coordinates, m) {
 }
 
 function interpolateSphere(lobes) {
+  var e = 1e-2;
   var coordinates = [],
       lobe,
       lambda0, phi0, phi1,
@@ -38,12 +39,17 @@ function interpolateSphere(lobes) {
     lambda0 = lobe[0][0], phi0 = lobe[0][1], phi1 = lobe[1][1];
     lambda2 = lobe[2][0], phi2 = lobe[2][1];
     coordinates.push(interpolateLine([
-      [lambda0 + epsilon, phi0 + epsilon],
-      [lambda0 + epsilon, phi1 - epsilon],
-      [lambda2 - epsilon, phi1 - epsilon],
-      [lambda2 - epsilon, phi2 + epsilon]
-    ], 30));
+      [lambda0 + epsilon, phi0 + e],
+      [lambda0 + epsilon, phi1 - e],
+      [lambda2 - epsilon, phi1 - e],
+      [lambda2 - epsilon, phi2 + e]
+    ], 10));
   }
+
+  coordinates.push(interpolateLine([
+      [lambda2 - epsilon, phi2 + e],
+      [lobes[1][lobes[1].length - 1][2][0] - epsilon, lobes[1][lobes[1].length - 1][2][1] - e]
+    ], 2));
 
   // Southern Hemisphere
   for (i = lobes[1].length - 1; i >= 0; --i) {
@@ -51,16 +57,24 @@ function interpolateSphere(lobes) {
     lambda0 = lobe[0][0], phi0 = lobe[0][1], phi1 = lobe[1][1];
     lambda2 = lobe[2][0], phi2 = lobe[2][1];
     coordinates.push(interpolateLine([
-      [lambda2 - epsilon, phi2 - epsilon],
-      [lambda2 - epsilon, phi1 + epsilon],
-      [lambda0 + epsilon, phi1 + epsilon],
-      [lambda0 + epsilon, phi0 - epsilon]
-    ], 30));
+      [lambda2 - epsilon, phi2 - e],
+      [lambda2 - epsilon, phi1 + e],
+      [lambda0 + epsilon, phi1 + e],
+      [lambda0 + epsilon, phi0 - e]
+    ], 10));
   }
+
+  coordinates.push(interpolateLine([
+      [lambda0 + epsilon, phi0 - e],
+      coordinates[0][0]
+    ], 2));
+
+  coordinates = merge(coordinates);
+  coordinates.push(coordinates[0]);
 
   return {
     type: "Polygon",
-    coordinates: [merge(coordinates)]
+    coordinates: [coordinates]
   };
 }
 
@@ -93,9 +107,10 @@ export default function(project, lobes) {
 
   p.stream = function(stream) {
     var rotate = p.rotate(),
+        polygon = p.clipPolygon(),
         rotateStream = stream_(stream),
-        sphereStream = (p.rotate([0, 0]), stream_(stream));
-    p.rotate(rotate);
+        sphereStream = (p.rotate([0, 0]).clipPolygon(null), stream_(stream));
+    p.rotate(rotate).clipPolygon(polygon);
     rotateStream.sphere = function() { geoStream(sphere, sphereStream); };
     return rotateStream;
   };
@@ -137,8 +152,7 @@ export default function(project, lobes) {
 
     return p;
   };
-
   if (lobes != null) p.lobes(lobes);
 
-  return p;
+  return p.clipPolygon(sphere);
 }
